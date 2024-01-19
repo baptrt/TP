@@ -24,6 +24,9 @@ int pascal(int i, int j){
     else if (j == 0){
         return P0;
     }
+    else if (j == i){
+        return P0;
+    }
     return pascal(i-1,j-1) + pascal(i-1,j);
 }
 
