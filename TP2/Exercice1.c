@@ -21,7 +21,7 @@ int pascal(int i, int j){
     if (i == 0){
         return P0;
     }
-    if (j == 0){
+    else if (j == 0){
         return P0;
     }
     return pascal(i-1,j-1) + pascal(i-1,j);
