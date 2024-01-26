@@ -9,7 +9,7 @@ int* tableau_initial_pascal(){
 }
 
 int* tableau_nouvelle_ligne(int* ligne, int n){
-    int* nouvelle_ligne = mallox(sizeof(int) * (n+1));
+    int* nouvelle_ligne = malloc(sizeof(int) * (n+1));
     nouvelle_ligne[0] = 0;
     nouvelle_ligne[n] = 0;
     for(int i = 1; i < n; i++){
@@ -20,6 +20,7 @@ int* tableau_nouvelle_ligne(int* ligne, int n){
 
 void affiche_pascal(int n){
     int* ligne_actuelle;
+    int* ligne_precedente; 
     ligne_actuelle = tableau_initial_pascal();
     for (int ligne = 0; ligne < n; ligne++){
         for (int colonne =0; colonne<= ligne; colonne++){
