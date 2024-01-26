@@ -1,35 +1,31 @@
 #include <stdio.h> 
 
-int pascal(int i, int j);
-
-void main(){
-    int i;
-    printf("Jusqu'à quelle ligne i veux-tu avoir le triangle de Pascal?");
-    scanf("%i", &i);
-
-
-    for (int k = 0; k<i; k++){
-
-        for (int l = 0; l<(k+1); l++){
-            int a = pascal(k,l);
-            printf("%d", a);
-        }
-        printf("\n");
-    }
+int* tableau_initial_pascal(){
+    int* tableau = malloc(sizeof(int) * 3);
+    tableau[0] = 0;
+    tableau[1] = 1;
+    tableau[2] = 0;
+    return tableau;
 }
 
-int pascal(int i, int j){
-    int tableau[i][j];
-    
-    tableau[0][0] = 0;
-    tableau[1][0] = 1;
-    tableau[2][0] = 0;
-
-    for (int k = 1; k<(i+1); k++){
-        for (int l = 1; l<(k+2); l++){
-                tableau[k][l] = tableau[k-1][l-1] + tableau[k-1][l];
-            } 
-        }
-     return tableau[i][j];
+int* tableau_nouvelle_ligne(int* ligne, int n){
+    int* nouvelle_ligne = mallox(sizeof(int) * (n+1));
+    nouvelle_ligne[0] = 0;
+    nouvelle_ligne[n] = 0;
+    for(int i = 1; i < n; i++){
+        nouvelle_ligne[i] = ligne[i] + ligne [i-1];
     }
+    return nouvelle_ligne;
+}
 
+void affiche_pascal(int n){
+    int* ligne_actuelle;
+    ligne_actuelle = tableau_initial_pascal();
+    for (int ligne = 0; ligne < n; ligne++){
+        for (int colonne =0; colonne<= ligne; colonne++){
+            printf("%i", ligne_actuelle[colonne + 1]);
+        }
+        printf("\n");
+        ligne_actuelle = tableau_nouvelle_ligne_pascal(ligne_actuelle, ligne + 3);
+    }
+}
