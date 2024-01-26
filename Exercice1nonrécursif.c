@@ -27,6 +27,5 @@ int pascal(int i, int j){
             } 
         }
     }
-}
 
 
